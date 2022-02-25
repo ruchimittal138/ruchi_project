@@ -1,6 +1,6 @@
 #use bigjson library to handle large set of data
 import bigjson
-#define a function which calculate BMI for the data in BMI.json and save the output in the required format in BMI_New.json                
+#define a function which calculate BMI for the data in input.json and save the output in the required format in output.json                
 def Calculator(data):
     #basic predefined values used to calculate BMI
     BMI_Range={0:[0,18.4],1:[18.5,24.9],2:[25,29.9],3:[30,34.9],4:[35,39.9],5:[40,100]}
@@ -8,7 +8,7 @@ def Calculator(data):
     BMI_Category=["Underweight","Normal weight","Overweight","Moderately obese","Severely obese","Very severely obese"]
     #intitalize variable to calculate total overweight person
     total_overweighted_person = 0
-    with open('BMI_NEW.json', 'w') as outfile:
+    with open('output.json', 'w') as outfile:
         
         for Item in params:
             temp = {}
@@ -35,7 +35,7 @@ def Calculator(data):
     return total_overweighted_person
 #main function call    
 if __name__=='__main__':
-    with open('BMI.json', 'rb') as data:
+    with open('input.json', 'rb') as data:
         params = bigjson.load(data)
     total_overweighted_person=Calculator(params)
     #print total number of over weight person
